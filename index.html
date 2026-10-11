@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIYAMS LLC | Great Products, Great Prices</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emeraldBrand: {
+                            50: '#F2F7F4',
+                            100: '#E1ECE5',
+                            500: '#2E5B40',
+                            800: '#1E3E2B', // Official Brand Emerald Green
+                            900: '#13281C',
+                        },
+                        creamBrand: {
+                            50: '#FCFAF7',
+                            100: '#F9F6EE', // Luxury Champagne Cream
+                            200: '#F4EFEB',
+                            300: '#EFE8DA',
+                        },
+                        goldBrand: {
+                            light: '#E6C665',
+                            DEFAULT: '#D4AF37', // Metallic Gold
+                            dark: '#C5A059',
+                        },
+                        blushPink: {
+                            50: '#FFF5F8',
+                            100: '#FCE4EC', // Soft Blush Pink
+                            300: '#F8BBD0',
+                            500: '#E91E63',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Cinzel', 'serif'],
+                        script: ['Great Vibes', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-watermark {
+            background-image: radial-gradient(circle at 15% 15%, rgba(30, 62, 43, 0.04) 0%, transparent 40%),
+                              radial-gradient(circle at 85% 85%, rgba(212, 175, 55, 0.06) 0%, transparent 40%),
+                              radial-gradient(circle at 50% 50%, rgba(252, 228, 236, 0.3) 0%, transparent 60%);
+        }
+
+        /* Glassmorphism containers */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.90);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+        }
+
+        .glass-dark {
+            background: rgba(30, 62, 43, 0.94);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .shimmer-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer-effect::after {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                60deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.25) 50%,
+                transparent 100%
+            );
+            transform: rotate(30deg);
+            animation: shimmer 7s infinite;
+            content: '';
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(30deg); }
+            100% { transform: translateX(100%) rotate(30deg); }
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F9F6EE;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #1E3E2B;
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+<body class="bg-creamBrand-100 text-gray-800 font-sans antialiased bg-watermark min-h-screen flex flex-col justify-between selection:bg-emeraldBrand-800 selection:text-goldBrand">
+
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-25">
+        <!-- Floating Butterfly Watermark Left -->
+        <svg class="absolute top-1/4 -left-10 w-80 h-80 text-goldBrand opacity-20 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12,2C12,2 10.5,6.5 8,8C5.5,9.5 2,8 2,12C2,16 6,17.5 8,16C10,14.5 11.5,13 12,13C12.5,13 14,14.5 16,16C18,17.5 22,16 22,12C22,8 18.5,9.5 16,8C13.5,6.5 12,2 12,2Z"/>
+        </svg>
+        <!-- Center Emblem Background Watermark -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] rounded-full border-[20px] border-emeraldBrand-800/5 flex items-center justify-center">
+            <span class="font-serif text-[130px] font-bold text-emeraldBrand-800/5 tracking-widest">SIYAMS</span>
+        </div>
+        <!-- Ribbon Leaf Silhouette Right -->
+        <svg class="absolute bottom-10 -right-20 w-96 h-96 text-emeraldBrand-800 opacity-15" fill="currentColor" viewBox="0 0 100 100">
+            <path d="M50 0 C60 20, 80 30, 100 30 C80 50, 80 80, 50 100 C40 70, 20 60, 0 60 C30 40, 30 10, 50 0 Z"></path>
+        </svg>
+    </div>
+
+    <header class="sticky top-0 z-50 glass-card border-b border-goldBrand/30 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20 sm:h-24">
+                
+                <!-- Circular Siyams Luxury Logo Badge -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-emeraldBrand-800 p-1 ring-2 ring-goldBrand shadow-md group-hover:scale-105 transition-transform duration-300 flex items-center justify-center shrink-0">
+                        <!-- Official Siyams Logo SVG Vector -->
+                        <svg class="w-full h-full" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="100" cy="100" r="95" stroke="#D4AF37" stroke-width="4" fill="#1E3E2B"/>
+                            <circle cx="100" cy="100" r="85" fill="#F9F6EE"/>
+                            <circle cx="100" cy="100" r="80" stroke="#1E3E2B" stroke-width="2" stroke-dasharray="4 2"/>
+                            <!-- Butterfly Icon -->
+                            <path d="M100 45 C105 35 120 35 120 48 C120 58 105 60 100 65 C95 60 80 58 80 48 C80 35 95 35 100 45 Z" fill="#D4AF37"/>
+                            <path d="M100 65 C108 60 125 70 115 80 C105 85 100 70 100 65 Z" fill="#C5A059"/>
+                            <!-- Siyams Cursive Script -->
+                            <text x="100" y="115" font-family="'Great Vibes', cursive" font-size="48" font-weight="bold" fill="#1E3E2B" text-anchor="middle">Siyams</text>
+                            <!-- Heart Accent -->
+                            <path d="M100 125 C98 122 93 122 93 126 C93 129 100 134 100 134 C100 134 107 129 107 126 C107 122 102 122 100 125 Z" fill="#D4AF37"/>
+                            <!-- Tagline Arcs -->
+                            <text x="100" y="152" font-family="'Cinzel', serif" font-size="9" font-weight="700" fill="#1E3E2B" text-anchor="middle" letter-spacing="1">GREAT PRODUCTS</text>
+                            <text x="100" y="163" font-family="'Cinzel', serif" font-size="8" font-weight="700" fill="#D4AF37" text-anchor="middle" letter-spacing="1">GREAT PRICES</text>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="font-serif text-xl sm:text-2xl font-bold tracking-wider text-emeraldBrand-800 block leading-none">SIYAMS <span class="text-xs font-sans text-goldBrand-dark font-semibold tracking-widest block mt-1">LLC</span></span>
+                        <span class="text-[10px] font-sans tracking-widest text-gray-500 uppercase">Jewelry & Fragrances</span>
+                    </div>
+                </a>
+
+                <!-- Navigation Tabs -->
+                <nav class="hidden md:flex space-x-8 text-xs sm:text-sm font-semibold text-emeraldBrand-800">
+                    <a href="#catalog" class="hover:text-goldBrand transition-colors">Full Catalog</a>
+                    <a href="#catalog" onclick="filterCategory('perfumes')" class="hover:text-goldBrand transition-colors">Areej Fragrances</a>
+                    <a href="#catalog" onclick="filterCategory('necklaces')" class="hover:text-goldBrand transition-colors">Gold Necklaces</a>
+                    <a href="#catalog" onclick="filterCategory('earrings-bracelets')" class="hover:text-goldBrand transition-colors">Bracelets & Earrings</a>
+                    <a href="#about" class="hover:text-goldBrand transition-colors">About Us</a>
+                </nav>
+
+                <!-- Quick Action Contact Buttons -->
+                <div class="flex items-center gap-3">
+                    <a href="tel:6789839010" class="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-full border border-emeraldBrand-800/30 text-emeraldBrand-800 hover:bg-emeraldBrand-800 hover:text-white transition-all text-xs font-semibold">
+                        <i class="fa-solid fa-phone text-goldBrand"></i>
+                        <span>678-983-9010</span>
+                    </a>
+
+                    <a href="https://wa.me/16789839010?text=Hello%20Siyams%20LLC,%20I%20would%20like%20to%20inquire%20about%20your%20jewelry%20and%20fragrances." target="_blank" class="flex items-center gap-2 bg-emeraldBrand-800 hover:bg-emeraldBrand-900 text-white px-4 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase shadow-md hover:shadow-lg transition-all duration-300 ring-2 ring-goldBrand/40">
+                        <i class="fa-brands fa-whatsapp text-lg text-emerald-400"></i>
+                        <span>Order Now</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative py-12 lg:py-16 overflow-hidden z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Text Content -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 bg-emeraldBrand-800/10 border border-goldBrand/40 px-4 py-1.5 rounded-full text-emeraldBrand-800 text-xs sm:text-sm font-semibold">
+                        <i class="fa-solid fa-crown text-goldBrand"></i>
+                        <span>Luxury Boutique & Wholesale</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-emeraldBrand-900 leading-tight">
+                        Great Products, <br>
+                        <span class="gold-gradient-text italic font-script text-5xl sm:text-6xl lg:text-7xl">Great Prices</span>
+                    </h1>
+
+                    <p class="text-gray-600 max-w-2xl mx-auto lg:mx-0 text-base sm:text-lg leading-relaxed">
+                        Explore our exclusive collection of non-tarnish 18K gold plated stainless steel necklaces, charm bracelets, designer hoop earrings, and aromatic original AREEJ room fresheners.
+                    </p>
+
+                    <!-- CTAs & Direct Buttons -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#catalog" class="bg-emeraldBrand-800 hover:bg-emeraldBrand-900 text-creamBrand-100 font-bold px-8 py-3.5 rounded-full shadow-xl hover:shadow-2xl border border-goldBrand transition-all transform hover:-translate-y-0.5 flex items-center gap-3">
+                            <span>Explore Catalog</span>
+                            <i class="fa-solid fa-arrow-right text-goldBrand"></i>
+                        </a>
+
+                        <button onclick="openInquiryModal('General Catalog Inquiry')" class="bg-white hover:bg-creamBrand-200 text-emeraldBrand-800 font-bold px-6 py-3.5 rounded-full border border-emeraldBrand-800/30 shadow-sm transition-all flex items-center gap-2">
+                            <i class="fa-regular fa-paper-plane text-emeraldBrand-800"></i>
+                            <span>Send Inquiry</span>
+                        </button>
+                    </div>
+
+                    <!-- Direct Info Badges -->
+                    <div class="pt-6 grid grid-cols-3 gap-4 border-t border-goldBrand/20 max-w-xl mx-auto lg:mx-0 text-xs text-gray-600">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-gem text-goldBrand text-base"></i>
+                            <span>18K Gold Finish</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-spray-can text-emeraldBrand-800 text-base"></i>
+                            <span>Long-lasting Areej</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-truck-fast text-goldBrand text-base"></i>
+                            <span>Fast Dispatch</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right Emblem Badge Showcase -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md bg-white p-6 sm:p-8 rounded-3xl shadow-2xl border-2 border-goldBrand/40 shimmer-effect text-center space-y-6">
+                        
+                        <!-- Circular Logo Badge Render -->
+                        <div class="relative mx-auto w-64 h-64 sm:w-72 sm:h-72 rounded-full p-2 bg-gradient-to-tr from-emeraldBrand-800 via-emeraldBrand-500 to-goldBrand shadow-xl flex items-center justify-center">
+                            <div class="w-full h-full rounded-full bg-creamBrand-100 flex flex-col items-center justify-center p-4 relative border-4 border-emeraldBrand-800">
+                                
+                                <svg class="w-12 h-12 text-goldBrand mb-1 animate-bounce" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12,2C12,2 10.5,6.5 8,8C5.5,9.5 2,8 2,12C2,16 6,17.5 8,16C10,14.5 11.5,13 12,13C12.5,13 14,14.5 16,16C18,17.5 22,16 22,12C22,8 18.5,9.5 16,8C13.5,6.5 12,2 12,2Z"/>
+                                </svg>
+
+                                <h2 class="font-script text-5xl sm:text-6xl text-emeraldBrand-800 leading-none">Siyams</h2>
+                                <div class="w-16 h-0.5 bg-goldBrand my-1 rounded-full"></div>
+                                <p class="font-serif text-[10px] sm:text-xs font-bold text-emeraldBrand-900 tracking-widest uppercase">Great Products</p>
+                                <p class="font-serif text-[9px] sm:text-[10px] font-bold text-goldBrand-dark tracking-widest uppercase">Great Prices</p>
+                                
+                                <div class="mt-2 flex items-center gap-1 text-goldBrand text-xs">
+                                    <i class="fa-solid fa-heart"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1">
+                            <h3 class="font-serif text-lg font-bold text-emeraldBrand-900">Retail & Wholesale Orders</h3>
+                            <p class="text-xs text-gray-500">Contact us directly for instant stock availability & custom pricing</p>
+                        </div>
+
+                        <div class="pt-1 flex items-center justify-center gap-3">
+                            <a href="mailto:Siyams4626@gmail.com" class="text-xs font-semibold text-emeraldBrand-800 hover:text-goldBrand transition-colors bg-creamBrand-200 px-4 py-2 rounded-full border border-goldBrand/30">
+                                <i class="fa-regular fa-envelope mr-1 text-goldBrand"></i> Siyams4626@gmail.com
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="catalog" class="py-5 bg-emeraldBrand-800 text-creamBrand-100 sticky top-20 sm:top-24 z-40 shadow-md border-y border-goldBrand/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-sliders text-goldBrand"></i>
+                    <span class="font-serif font-bold text-xs sm:text-sm tracking-wider uppercase text-goldBrand-light">Filter Showcase:</span>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm">
+                    <button onclick="filterCategory('all')" id="btn-all" class="category-btn active bg-goldBrand text-emeraldBrand-900 font-bold px-4 py-2 rounded-full transition-all shadow">
+                        All Products
+                    </button>
+                    <button onclick="filterCategory('perfumes')" id="btn-perfumes" class="category-btn bg-emeraldBrand-900/60 hover:bg-goldBrand hover:text-emeraldBrand-900 text-creamBrand-100 font-semibold px-4 py-2 rounded-full border border-goldBrand/30 transition-all">
+                        Luxury Perfumes & Fresheners
+                    </button>
+                    <button onclick="filterCategory('necklaces')" id="btn-necklaces" class="category-btn bg-emeraldBrand-900/60 hover:bg-goldBrand hover:text-emeraldBrand-900 text-creamBrand-100 font-semibold px-4 py-2 rounded-full border border-goldBrand/30 transition-all">
+                        Gold Jewelry & Necklaces
+                    </button>
+                    <button onclick="filterCategory('earrings-bracelets')" id="btn-earrings-bracelets" class="category-btn bg-emeraldBrand-900/60 hover:bg-goldBrand hover:text-emeraldBrand-900 text-creamBrand-100 font-semibold px-4 py-2 rounded-full border border-goldBrand/30 transition-all">
+                        Bracelets & Earrings
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+
+        <!-- PRODUCT CATALOG GRID -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- PRODUCT 1: Areej Collection Air Freshener Pair -->
+            <div class="product-card glass-card rounded-3xl overflow-hidden shadow-lg border border-goldBrand/30 flex flex-col justify-between hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1" data-category="perfumes">
+                <div class="relative">
+                    <div class="h-64 sm:h-72 bg-emeraldBrand-900/5 relative overflow-hidden flex items-center justify-center p-4">
+                        <svg class="w-full h-full max-h-60" viewBox="0 0 300 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Juicy Cherry Bottle -->
+                            <rect x="70" y="80" width="65" height="130" rx="15" fill="#581C1C" stroke="#D4AF37" stroke-width="2"/>
+                            <!-- Crown Filigree Cap -->
+                            <circle cx="102" cy="50" r="25" fill="#D4AF37"/>
+                            <circle cx="102" cy="50" r="18" fill="#1E3E2B"/>
+                            <rect x="92" y="65" width="20" height="18" fill="#D4AF37"/>
+                            <text x="102" y="140" font-family="'Cinzel', serif" font-size="9" fill="#D4AF37" font-weight="bold" text-anchor="middle">AREEJ</text>
+                            <text x="102" y="155" font-family="'Plus Jakarta Sans', sans-serif" font-size="7" fill="#FFF" text-anchor="middle">Juicy Cherry</text>
+
+                            <!-- Mashriq Purple Bottle -->
+                            <rect x="165" y="80" width="65" height="130" rx="15" fill="#3B0764" stroke="#D4AF37" stroke-width="2"/>
+                            <!-- Crown Filigree Cap -->
+                            <circle cx="197" cy="50" r="25" fill="#D4AF37"/>
+                            <circle cx="197" cy="50" r="18" fill="#581C1C"/>
+                            <rect x="187" y="65" width="20" height="18" fill="#D4AF37"/>
+                            <text x="197" y="140" font-family="'Cinzel', serif" font-size="9" fill="#D4AF37" font-weight="bold" text-anchor="middle">AREEJ</text>
+                            <text x="197" y="155" font-family="'Plus Jakarta Sans', sans-serif" font-size="7" fill="#FFF" text-anchor="middle">Mashriq</text>
+                        </svg>
+                        <span class="absolute top-4 left-4 bg-emeraldBrand-800 text-goldBrand text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-goldBrand/40">Luxury Spray</span>
+                        <span class="absolute top-4 right-4 bg-blushPink-100 text-emeraldBrand-900 border border-blushPink-300 text-[10px] font-bold px-2.5 py-1 rounded-full">300ml Pair</span>
+                    </div>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex items-center justify-between text-xs text-goldBrand-dark font-bold mb-1">
+                            <span>AREEJ Collection</span>
+                            <div class="flex text-goldBrand"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        </div>
+                        <h3 class="text-xl font-serif font-bold text-emeraldBrand-900">Areej Air Freshener - Juicy Cherry & Mashriq</h3>
+                        <p class="text-xs text-gray-600 mt-2 leading-relaxed">
+                            Original long-lasting luxury air freshener collection with gold crown filigree caps. Available in Juicy Cherry (Rich Berry) and Mashriq (Royal Oriental Oud).
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-goldBrand/20 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-gray-500 block">300 ml Spray Bottle</span>
+                            <span class="text-lg font-serif font-bold text-emeraldBrand-800">Inquire Price</span>
+                        </div>
+                        <a href="https://wa.me/16789839010?text=Hello,%20I%20want%20to%20order%20the%20Areej%20Air%20Freshener%20Collection%20(Juicy%20Cherry%20/%20Mashriq)." target="_blank" class="bg-emeraldBrand-800 hover:bg-emeraldBrand-900 text-white px-4 py-2.5 rounded-full text-xs font-bold transition-all flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                            <span>Order</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 2: Delicate Gold Drop Lariat Necklace -->
+            <div class="product-card glass-card rounded-3xl overflow-hidden shadow-lg border border-goldBrand/30 flex flex-col justify-between hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1" data-category="necklaces">
+                <div class="relative">
+                    <div class="h-64 sm:h-72 bg-emeraldBrand-900/5 relative overflow-hidden flex items-center justify-center p-4">
+                        <svg class="w-full h-full max-h-56" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M80 30 C 90 90, 160 90, 170 30" stroke="#E5E7EB" stroke-width="20" fill="none"/>
+                            <path d="M85 45 Q 125 110 165 45" stroke="#D4AF37" stroke-width="2" fill="none"/>
+                            <line x1="125" y1="92" x2="125" y2="200" stroke="#D4AF37" stroke-width="2"/>
+                            <circle cx="125" cy="115" r="3.5" fill="#FFFFFF" stroke="#D4AF37"/>
+                            <circle cx="125" cy="140" r="3.5" fill="#FFFFFF" stroke="#D4AF37"/>
+                            <circle cx="125" cy="165" r="3.5" fill="#FFFFFF" stroke="#D4AF37"/>
+                            <polygon points="125,190 129,198 121,198" fill="#D4AF37"/>
+                        </svg>
+                        <span class="absolute top-4 left-4 bg-emeraldBrand-800 text-goldBrand text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-goldBrand/40">18K Gold Plated</span>
+                    </div>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex items-center justify-between text-xs text-goldBrand-dark font-bold mb-1">
+                            <span>Luxury Model Line</span>
+                            <span class="text-xs bg-emeraldBrand-800 text-white px-2 py-0.5 rounded-full">Crystal Accents</span>
+                        </div>
+                        <h3 class="text-xl font-serif font-bold text-emeraldBrand-900">Delicate Gold Drop Lariat Necklace</h3>
+                        <p class="text-xs text-gray-600 mt-2 leading-relaxed">
+                            Elegantly modeled Y-lariat drop necklace with bezel-set teardrop crystals cascading down a dainty 18K gold stainless steel chain.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-goldBrand/20 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-gray-500 block">Non-Tarnish Finish</span>
+                            <span class="text-lg font-serif font-bold text-emeraldBrand-800">Inquire Price</span>
+                        </div>
+                        <a href="https://wa.me/16789839010?text=Hello,%20I%20want%20to%20order%20the%20Delicate%20Gold%20Drop%20Lariat%20Necklace." target="_blank" class="bg-emeraldBrand-800 hover:bg-emeraldBrand-900 text-white px-4 py-2.5 rounded-full text-xs font-bold transition-all flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                            <span>Order</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 3: Multi-pendant Gold Charm Necklace (Moon & Star) -->
+            <div class="product-card glass-card rounded-3xl overflow-hidden shadow-lg border border-goldBrand/30 flex flex-col justify-between hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1" data-category="necklaces">
+                <div class="relative">
+                    <div class="h-64 sm:h-72 bg-emeraldBrand-900/5 relative overflow-hidden flex items-center justify-center p-4">
+                        <svg class="w-full h-full max-h-56" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M40 70 C 80 200, 170 200, 210 70" stroke="#D4AF37" stroke-width="3" fill="none"/>
+                            <path d="M70 120 A 8 8 0 0 0 78 128 A 6 6 0 0 1 70 120 Z" fill="#D4AF37"/>
+                            <polygon points="100,150 103,158 111,158 105,163 107,171 100,166 93,171 95,163 89,158 97,158" fill="#D4AF37"/>
+                            <path d="M130 160 A 8 8 0 0 0 138 168 A 6 6 0 0 1 130 160 Z" fill="#D4AF37"/>
+                            <polygon points="160,140 163,148 171,148 165,153 167,161 160,156 153,161 155,153 149,148 157,148" fill="#D4AF37"/>
+                        </svg>
+                        <span class="absolute top-4 left-4 bg-emeraldBrand-800 text-goldBrand text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-goldBrand/40">Celestial Line</span>
+                    </div>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex items-center justify-between text-xs text-goldBrand-dark font-bold mb-1">
+                            <span>Celestial Collection</span>
+                            <span class="text-xs bg-goldBrand/20 text-emeraldBrand-800 px-2 py-0.5 rounded-full">Adjustable</span>
+                        </div>
+                        <h3 class="text-xl font-serif font-bold text-emeraldBrand-900">Multi-Pendant Gold Charm Necklace</h3>
+                        <p class="text-xs text-gray-600 mt-2 leading-relaxed">
+                            Delicate polished gold chain lined with alternating dangling crescent moons and five-point stars. Perfect for layering or wearing solo.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-goldBrand/20 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-gray-500 block">Stainless Steel</span>
+                            <span class="text-lg font-serif font-bold text-emeraldBrand-800">Inquire Price</span>
+                        </div>
+                        <a href="https://wa.me/16789839010?text=Hello,%20I%20want%20to%20order%20the%20Multi-Pendant%20Gold%20Moon%20and%20Star%20Charm%20Necklace." target="_blank" class="bg-emeraldBrand-800 hover:bg-emeraldBrand-900 text-white px-4 py-2.5 rounded-full text-xs font-bold transition-all flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                            <span>Order</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 4: Coffee Bean Link Gold Chain Necklace -->
+            <div class="product-card glass-card rounded-3xl overflow-hidden shadow-lg border border-goldBrand/30 flex flex-col justify-between hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1" data-category="necklaces">
+                <div class="relative">
+                    <div class="h-64 sm:h-72 bg-emeraldBrand-900/5 relative overflow-hidden flex items-center justify-center p-4">
+                        <svg class="w-full h-full max-h-56" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="125" cy="125" r="70" stroke="#D4AF37" stroke-width="4" stroke-dasharray="16 8" fill="none"/>
+                            <ellipse cx="65" cy="110" rx="10" ry="14" fill="#D4AF37"/>
+                            <ellipse cx="185" cy="110" rx="10" ry="14" fill="#D4AF37"/>
+                            <ellipse cx="125" cy="190" rx="14" ry="10" fill="#D4AF37"/>
+                        </svg>
+                        <span class="absolute top-4 left-4 bg-emeraldBrand-800 text-goldBrand text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-goldBrand/40">Statement Chain</span>
+                    </div>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex items-center justify-between text-xs text-goldBrand-dark font-bold mb-1">
+                            <span>Mariner Classics</span>
+                            <span class="text-xs bg-goldBrand/20 text-emeraldBrand-800 px-2 py-0.5 rounded-full">High Polish</span>
+                        </div>
+                        <h3 class="text-xl font-serif font-bold text-emeraldBrand-900">Coffee Bean Link Gold Chain Necklace</h3>
+                        <p class="text-xs text-gray-600 mt-2 leading-relaxed">
+                            Sophisticated mariner coffee-bean gold chain with smooth polished oval stations and an extended lobster clasp lock.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-goldBrand/20 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-gray-500 block">Unisex Design</span>
+                            <span class="text-lg font-serif font-bold text-emeraldBrand-800">Inquire Price</span>
+                        </div>
+                        <a href="https://wa.me/16789839010?text=Hello,%20I%20am%20interested%20in%20the%20Coffee%20Bean%20Link%20Gold%20Chain%20Necklace." target="_blank" class="bg-emeraldBrand-800 hover:bg-emeraldBrand-900 text-white px-4 py-2.5 rounded-full text-xs font-bold transition-all flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                            <span>Order</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 5: Luxury Gold Charm Bracelet with Iconic Monograms -->
+            <div class="product-card glass-card rounded-3xl overflow-hidden shadow-lg border border-goldBrand/30 flex flex-col justify-between hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1" data-category="earrings-bracelets">
+                <div class="relative">
+                    <div class="h-64 sm:h-72 bg-emeraldBrand-900/5 relative overflow-hidden flex items-center justify-center p-4">
+                        <svg class="w-full h-full max-h-56 text-goldBrand" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="125" cy="125" r="75" stroke="#D4AF37" stroke-width="8" stroke-dasharray="12 6" fill="none"/>
+                            <path d="M125 40 C115 40 110 50 115 55 C120 60 130 60 135 55 C140 50 135 40 125 40 Z" fill="#D4AF37"/>
+                            <circle cx="60" cy="125" r="10" fill="#D4AF37"/>
+                            <circle cx="190" cy="125" r="10" fill="#D4AF37"/>
+                            <circle cx="125" cy="195" r="10" fill="#D4AF37"/>
+                        </svg>
+                        <span class="absolute top-4 left-4 bg-emeraldBrand-800 text-goldBrand text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-goldBrand/40">Charm Bracelet</span>
+                    </div>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex items-center justify-between text-xs text-goldBrand-dark font-bold mb-1">
+                            <span>Designer Style</span>
+                            <span class="text-xs bg-emeraldBrand-800 text-white px-2 py-0.5 rounded-full">Heavy Plated</span>
+                        </div>
+                        <h3 class="text-xl font-serif font-bold text-emeraldBrand-900">Luxury Gold Charm Monogram Bracelet</h3>
+                        <p class="text-xs text-gray-600 mt-2 leading-relaxed">
+                            Heavy 18K gold-plated link chain bracelet styled with iconic double-C monogram charms and textured link accents.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-goldBrand/20 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-gray-500 block">Waterproof Finish</span>
+                            <span class="text-lg font-serif font-bold text-emeraldBrand-800">Inquire Price</span>
+                        </div>
+                        <a href="https://wa.me/16789839010?text=Hello,%20I%20would%20like%20to%20order%20the%20Luxury%20Gold%20Charm%20Monogram%20Bracelet." target="_blank" class="bg-emeraldBrand-800 hover:bg-emeraldBrand-900 text-white px-4 py-2.5 rounded-full text-xs font-bold transition-all flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                            <span>Order</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 6: ASON Gold Twist & Chunky Hoop Earrings -->
+            <div class="product-card glass-card rounded-3xl overflow-hidden shadow-lg border border-goldBrand/30 flex flex-col justify-between hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1" data-category="earrings-bracelets">
+                <div class="relative">
+                    <div class="h-64 sm:h-72 bg-emeraldBrand-900/5 relative overflow-hidden flex items-center justify-center p-4">
+                        <svg class="w-full h-full max-h-56" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="50" y="40" width="70" height="90" rx="8" fill="#FFFFFF" stroke="#CCCCCC"/>
+                            <circle cx="85" cy="85" r="22" stroke="#D4AF37" stroke-width="6" fill="none"/>
+
+                            <rect x="135" y="40" width="70" height="90" rx="8" fill="#FFFFFF" stroke="#CCCCCC"/>
+                            <circle cx="170" cy="85" r="22" stroke="#D4AF37" stroke-width="8" stroke-dasharray="4 2" fill="none"/>
+
+                            <rect x="90" y="145" width="70" height="90" rx="8" fill="#FFFFFF" stroke="#CCCCCC"/>
+                            <path d="M110 190 Q125 165 140 190" stroke="#D4AF37" stroke-width="10" stroke-linecap="round" fill="none"/>
+                        </svg>
+                        <span class="absolute top-4 left-4 bg-emeraldBrand-800 text-goldBrand text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-goldBrand/40">ASON Card Collection</span>
+                    </div>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex items-center justify-between text-xs text-goldBrand-dark font-bold mb-1">
+                            <span>Original Cards</span>
+                            <span class="text-xs bg-goldBrand text-emeraldBrand-900 font-bold px-2 py-0.5 rounded-full">Hypoallergenic</span>
+                        </div>
+                        <h3 class="text-xl font-serif font-bold text-emeraldBrand-900">ASON Gold Twist & Chunky Hoop Earrings</h3>
+                        <p class="text-xs text-gray-600 mt-2 leading-relaxed">
+                            Premium selection of chunky rope twisted hoops, wide tear-dome huggies, and croissant gold hoops on original ASON cards.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-goldBrand/20 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-gray-500 block">316L Stainless Steel</span>
+                            <span class="text-lg font-serif font-bold text-emeraldBrand-800">Inquire Price</span>
+                        </div>
+                        <a href="https://wa.me/16789839010?text=Hello,%20I%20want%20to%20buy%20the%20ASON%20Gold%20Twist%20and%20Chunky%20Hoop%20Earrings." target="_blank" class="bg-emeraldBrand-800 hover:bg-emeraldBrand-900 text-white px-4 py-2.5 rounded-full text-xs font-bold transition-all flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                            <span>Order</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 7: XUPING Classic Textured Gold Hoop Earrings Set -->
+            <div class="product-card glass-card rounded-3xl overflow-hidden shadow-lg border border-goldBrand/30 flex flex-col justify-between hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1" data-category="earrings-bracelets">
+                <div class="relative">
+                    <div class="h-64 sm:h-72 bg-emeraldBrand-900/5 relative overflow-hidden flex items-center justify-center p-4">
+                        <svg class="w-full h-full max-h-56" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="30" y="30" width="190" height="45" rx="5" fill="#EFE8DA" stroke="#D4AF37"/>
+                            <text x="125" y="58" font-family="'Cinzel', serif" font-size="14" font-weight="bold" fill="#581C1C" text-anchor="middle">XUPING JEWELRY</text>
+
+                            <circle cx="85" cy="145" r="45" stroke="#D4AF37" stroke-width="4" stroke-dasharray="3 2" fill="none"/>
+                            <circle cx="115" cy="145" r="45" stroke="#E6C665" stroke-width="4" stroke-dasharray="3 2" fill="none"/>
+                            <circle cx="145" cy="145" r="45" stroke="#D4AF37" stroke-width="4" stroke-dasharray="3 2" fill="none"/>
+                            <circle cx="175" cy="145" r="45" stroke="#C5A059" stroke-width="4" stroke-dasharray="3 2" fill="none"/>
+                        </svg>
+                        <span class="absolute top-4 left-4 bg-emeraldBrand-800 text-goldBrand text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-goldBrand/40">XUPING Original</span>
+                    </div>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex items-center justify-between text-xs text-goldBrand-dark font-bold mb-1">
+                            <span>XUPING Certified</span>
+                            <span class="text-xs text-emeraldBrand-800 font-semibold">Diamond Cut</span>
+                        </div>
+                        <h3 class="text-xl font-serif font-bold text-emeraldBrand-900">XUPING Classic Textured Gold Hoop Set</h3>
+                        <p class="text-xs text-gray-600 mt-2 leading-relaxed">
+                            Signature diamond-cut textured hoop earrings with secure click-top latch. Bright 18K yellow gold tone finish.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-goldBrand/20 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-gray-500 block">Multi-Size Available</span>
+                            <span class="text-lg font-serif font-bold text-emeraldBrand-800">Inquire Price</span>
+                        </div>
+                        <a href="https://wa.me/16789839010?text=Hello,%20I%20am%20inquiring%20about%20the%20XUPING%20Classic%20Textured%20Gold%20Hoop%20Set." target="_blank" class="bg-emeraldBrand-800 hover:bg-emeraldBrand-900 text-white px-4 py-2.5 rounded-full text-xs font-bold transition-all flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                            <span>Order</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCT 8: Multi-style Layered Gold Pendant Necklace Display -->
+            <div class="product-card glass-card rounded-3xl overflow-hidden shadow-lg border border-goldBrand/30 flex flex-col justify-between hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1" data-category="necklaces">
+                <div class="relative">
+                    <div class="h-64 sm:h-72 bg-emeraldBrand-900/5 relative overflow-hidden flex items-center justify-center p-4">
+                        <svg class="w-full h-full max-h-56" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M70 230 L90 80 Q125 50 160 80 L180 230 Z" fill="#333333"/>
+                            <path d="M100 80 Q125 120 150 80" stroke="#D4AF37" stroke-width="2" fill="none"/>
+                            <rect x="115" y="98" width="20" height="3" fill="#D4AF37"/>
+                            <path d="M92 80 Q125 170 158 80" stroke="#D4AF37" stroke-width="2" fill="none"/>
+                            <circle cx="125" cy="130" r="4" stroke="#D4AF37" stroke-width="2" fill="none"/>
+                            <line x1="125" y1="134" x2="125" y2="148" stroke="#D4AF37" stroke-width="2"/>
+                        </svg>
+                        <span class="absolute top-4 left-4 bg-emeraldBrand-800 text-goldBrand text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-goldBrand/40">Layering Set</span>
+                    </div>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex items-center justify-between text-xs text-goldBrand-dark font-bold mb-1">
+                            <span>Mannequin Line</span>
+                            <span class="text-xs bg-emeraldBrand-800 text-white px-2 py-0.5 rounded-full">Top Seller</span>
+                        </div>
+                        <h3 class="text-xl font-serif font-bold text-emeraldBrand-900">Multi-Style Layered Gold Pendant Necklace</h3>
+                        <p class="text-xs text-gray-600 mt-2 leading-relaxed">
+                            Versatile double-layered gold neck chains featuring key lock charms, horizontal bar pendants, and minimalist drop lockets.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-goldBrand/20 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-gray-500 block">Adjustable Lengths</span>
+                            <span class="text-lg font-serif font-bold text-emeraldBrand-800">Inquire Price</span>
+                        </div>
+                        <a href="https://wa.me/16789839010?text=Hello,%20I%20am%20interested%20in%20the%20Multi-Style%20Layered%20Gold%20Pendant%20Necklace." target="_blank" class="bg-emeraldBrand-800 hover:bg-emeraldBrand-900 text-white px-4 py-2.5 rounded-full text-xs font-bold transition-all flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                            <span>Order</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <section id="about" class="bg-emeraldBrand-800 text-creamBrand-100 py-16 border-y-2 border-goldBrand relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                
+                <div class="space-y-6">
+                    <span class="text-goldBrand font-serif text-xs font-bold uppercase tracking-widest block">About Siyams LLC</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white leading-tight">
+                        Quality Jewelry, <br>
+                        Fragrances & Direct Service
+                    </h2>
+                    <p class="text-creamBrand-200 text-sm sm:text-base leading-relaxed">
+                        At Siyams LLC, we are committed to providing premium 18K gold-plated stainless steel jewelry and long-lasting luxury air fresheners with unmatched value and fast order processing.
+                    </p>
+
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-center gap-3 text-goldBrand-light">
+                            <i class="fa-solid fa-circle-check text-goldBrand"></i>
+                            <span>Direct phone ordering & personal customer assistance</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-goldBrand-light">
+                            <i class="fa-solid fa-circle-check text-goldBrand"></i>
+                            <span>Instant WhatsApp stock inquiry & reservation</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-goldBrand-light">
+                            <i class="fa-solid fa-circle-check text-goldBrand"></i>
+                            <span>Bulk & wholesale options for boutique owners</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Direct Contact Card -->
+                <div class="bg-creamBrand-100 text-gray-800 p-8 rounded-3xl border-2 border-goldBrand shadow-2xl space-y-6">
+                    <div class="text-center space-y-1">
+                        <h3 class="font-serif text-2xl font-bold text-emeraldBrand-900">Contact Us Directly</h3>
+                        <p class="text-xs text-gray-500">Reach out for instant pricing, photos, and orders</p>
+                    </div>
+
+                    <div class="space-y-4 text-sm">
+                        <a href="tel:6789839010" class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-goldBrand/30 hover:border-emeraldBrand-800 transition-all shadow-sm">
+                            <div class="w-10 h-10 rounded-full bg-emeraldBrand-800/10 flex items-center justify-center text-emeraldBrand-800 font-bold shrink-0">
+                                <i class="fa-solid fa-phone text-goldBrand"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-gray-500 block">Phone Line</span>
+                                <span class="font-bold text-emeraldBrand-900 text-base">678-983-9010</span>
+                            </div>
+                        </a>
+
+                        <a href="mailto:Siyams4626@gmail.com" class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-goldBrand/30 hover:border-emeraldBrand-800 transition-all shadow-sm">
+                            <div class="w-10 h-10 rounded-full bg-emeraldBrand-800/10 flex items-center justify-center text-emeraldBrand-800 font-bold shrink-0">
+                                <i class="fa-solid fa-envelope text-goldBrand"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-gray-500 block">Email Address</span>
+                                <span class="font-bold text-emeraldBrand-900 text-sm sm:text-base">Siyams4626@gmail.com</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <button onclick="openInquiryModal('Direct Contact Request')" class="w-full bg-emeraldBrand-800 hover:bg-emeraldBrand-900 text-white font-bold py-3.5 rounded-full text-xs uppercase tracking-wider shadow-lg border border-goldBrand transition-all">
+                        Send Quick Message
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-emeraldBrand-900 text-creamBrand-300 py-12 border-t border-goldBrand/30 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+                
+                <div class="space-y-2">
+                    <div class="flex items-center justify-center md:justify-start gap-2">
+                        <span class="font-serif text-xl font-bold text-white tracking-widest">SIYAMS <span class="text-goldBrand">LLC</span></span>
+                    </div>
+                    <p class="text-gray-400">Great Products, Great Prices • Jewelry & Fragrances Boutique</p>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-6 text-gray-300">
+                    <a href="tel:6789839010" class="hover:text-goldBrand transition-colors"><i class="fa-solid fa-phone mr-1.5 text-goldBrand"></i>678-983-9010</a>
+                    <a href="mailto:Siyams4626@gmail.com" class="hover:text-goldBrand transition-colors"><i class="fa-solid fa-envelope mr-1.5 text-goldBrand"></i>Siyams4626@gmail.com</a>
+                </div>
+
+                <div class="text-gray-500">
+                    &copy; 2026 Siyams LLC. All Rights Reserved.
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Action Button -->
+    <a href="https://wa.me/16789839010?text=Hello%20Siyams%20LLC,%20I%20have%20a%20question%20about%20your%20products." target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-600 hover:bg-emerald-700 text-white p-4 rounded-full shadow-2xl flex items-center justify-center border-2 border-white ring-4 ring-emerald-500/30 transition-all transform hover:scale-110" title="Order via WhatsApp">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- Quick Message Inquiry Modal -->
+    <div id="inquiry-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-creamBrand-100 rounded-3xl max-w-md w-full p-6 sm:p-8 border-2 border-goldBrand shadow-2xl relative space-y-4">
+            <button onclick="closeInquiryModal()" class="absolute top-4 right-4 text-gray-400 hover:text-emeraldBrand-800 text-xl font-bold">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center space-y-1">
+                <div class="w-12 h-12 rounded-full bg-emeraldBrand-800 text-goldBrand mx-auto flex items-center justify-center text-xl mb-2">
+                    <i class="fa-regular fa-paper-plane"></i>
+                </div>
+                <h3 class="font-serif text-xl font-bold text-emeraldBrand-900">Send Direct Inquiry</h3>
+                <p id="modal-product-title" class="text-xs text-goldBrand-dark font-semibold">General Item Inquiry</p>
+            </div>
+
+            <form onsubmit="handleInquirySubmit(event)" class="space-y-3 text-xs">
+                <div>
+                    <label class="block text-gray-700 font-bold mb-1">Your Full Name</label>
+                    <input type="text" id="inquiry-name" required placeholder="Jane Doe" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:border-emeraldBrand-800 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-gray-700 font-bold mb-1">Phone / WhatsApp Number</label>
+                    <input type="tel" id="inquiry-phone" required placeholder="(678) 000-0000" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:border-emeraldBrand-800 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-gray-700 font-bold mb-1">Inquiry Details or Quantities</label>
+                    <textarea id="inquiry-message" rows="3" required placeholder="I would like to order 2 items..." class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:border-emeraldBrand-800 focus:outline-none"></textarea>
+                </div>
+
+                <div id="form-feedback" class="text-center text-xs font-bold text-emerald-700 hidden py-1">
+                    <i class="fa-solid fa-circle-check mr-1"></i> Inquiry sent! We will reach out to you shortly.
+                </div>
+
+                <button type="submit" class="w-full bg-emeraldBrand-800 hover:bg-emeraldBrand-900 text-white font-bold py-3 rounded-full uppercase tracking-wider shadow-md transition-all">
+                    Submit Inquiry
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Filtering Functionality for Products
+        function filterCategory(category) {
+            const cards = document.querySelectorAll('.product-card');
+            const buttons = document.querySelectorAll('.category-btn');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-goldBrand', 'text-emeraldBrand-900', 'active');
+                btn.classList.add('bg-emeraldBrand-900/60', 'text-creamBrand-100');
+            });
+
+            const activeBtn = document.getElementById(`btn-${category}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-emeraldBrand-900/60', 'text-creamBrand-100');
+                activeBtn.classList.add('bg-goldBrand', 'text-emeraldBrand-900', 'active');
+            }
+
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Modal Logic
+        function openInquiryModal(productName) {
+            document.getElementById('modal-product-title').innerText = productName;
+            document.getElementById('inquiry-modal').classList.remove('hidden');
+        }
+
+        function closeInquiryModal() {
+            document.getElementById('inquiry-modal').classList.add('hidden');
+            document.getElementById('form-feedback').classList.add('hidden');
+        }
+
+        function handleInquirySubmit(event) {
+            event.preventDefault();
+            const feedback = document.getElementById('form-feedback');
+            feedback.classList.remove('hidden');
+
+            setTimeout(() => {
+                closeInquiryModal();
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>
